@@ -8,6 +8,14 @@ class Person:
         self.sex = sex
         Person.counter += 1
 
+    def __str__(self):
+        """ String representation of the persons class. human-readable - print(my_new_person) """
+        return f'({self.first_name},{self.last_name},{self.age},{self.sex})'
+    
+    def __repr__(self):
+        """ method returns a string representation of an object that is machine-readable """
+        return f'Person({self.first_name},{self.last_name},{self.age},{self.sex})'
+
     @classmethod
     def my_person_class_method(cls,new_value):
         """
@@ -20,7 +28,30 @@ class Person:
     @staticmethod
     def my_static_function(arg1,arg2):
         print(arg1 * arg2)
+
+    def __eq__(self, other):
+        """ To define the equality logic for comparing two objects using the equal operator. \n
+        Uses the is operator for comparisons """
+        if isinstance(other, Person):
+            return self.age == other.age
+        return False
     
+    def __hash__(self):
+        """ Uses the id of objects """
+        return hash(self.age)
+    
+    def __bool__(self):
+        """ Implement the __bool__ method to override the default. The __bool__ method must return either True or False \n
+        To return a boolean value for an object"""
+        if self.age < 18 or self.age > 65:
+            return False
+        return True
+    
+    def __del__(self):
+        """ To define behavior when an object is about to be destroyed by the garbage collector \n
+        Python calls the __del__ method right before the garbage collector destroys the object """
+        print('__del__ was called')
+
     def welcome(self):
         print('Welcome to the show!')
 
