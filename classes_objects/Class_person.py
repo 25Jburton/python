@@ -50,7 +50,7 @@ class Person:
     def __del__(self):
         """ To define behavior when an object is about to be destroyed by the garbage collector \n
         Python calls the __del__ method right before the garbage collector destroys the object """
-        print('__del__ was called')
+        print(f'__del__ was called for {self.__dict__}')
 
     def welcome(self):
         print('Welcome to the show!')

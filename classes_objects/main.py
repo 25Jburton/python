@@ -21,4 +21,8 @@ print(my_new_person)
 
 # Call to __eq__ (Setup to compare the ages)
 print(my_new_person == my_child)
-print(hash(my_person2))
+
+print(my_child.__dict__)
+
+del my_child.title
+print(my_child.__dict__)
